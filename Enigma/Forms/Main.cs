@@ -13,6 +13,8 @@ namespace Enigma
         {
             try
             {
+                Pnl_Main.OpenForm(new Frm_Hash());
+
 
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -27,7 +29,7 @@ namespace Enigma
             catch (Exception ex) { MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
-        private void TsBtn_Encrypt_Click(object sender, EventArgs e)
+        private void TsBtn_EncryptS_Click(object sender, EventArgs e)
         {
             try
             {
@@ -36,7 +38,7 @@ namespace Enigma
             catch (Exception ex) { MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
-        private void TsBtn_Decrypt_Click(object sender, EventArgs e)
+        private void TsBtn_DecryptS_Click(object sender, EventArgs e)
         {
             try
             {

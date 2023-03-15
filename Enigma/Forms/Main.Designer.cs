@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             Ts_MenuTop = new ToolStrip();
             TsBtn_Hash = new ToolStripButton();
-            TsBtn_Encrypt = new ToolStripButton();
-            TsBtn_Decrypt = new ToolStripButton();
+            TsBtn_EncryptS = new ToolStripButton();
+            TsBtn_DecryptS = new ToolStripButton();
             Pnl_Main = new Panel();
             Ts_MenuTop.SuspendLayout();
             SuspendLayout();
@@ -41,7 +41,7 @@
             // 
             Ts_MenuTop.AutoSize = false;
             Ts_MenuTop.GripStyle = ToolStripGripStyle.Hidden;
-            Ts_MenuTop.Items.AddRange(new ToolStripItem[] { TsBtn_Hash, TsBtn_Encrypt, TsBtn_Decrypt });
+            Ts_MenuTop.Items.AddRange(new ToolStripItem[] { TsBtn_Hash, TsBtn_EncryptS, TsBtn_DecryptS });
             Ts_MenuTop.Location = new Point(0, 0);
             Ts_MenuTop.Name = "Ts_MenuTop";
             Ts_MenuTop.Size = new Size(834, 35);
@@ -58,23 +58,23 @@
             TsBtn_Hash.Text = "&Hash";
             TsBtn_Hash.Click += TsBtn_Hash_Click;
             // 
-            // TsBtn_Encrypt
+            // TsBtn_EncryptS
             // 
-            TsBtn_Encrypt.Image = (Image)resources.GetObject("TsBtn_Encrypt.Image");
-            TsBtn_Encrypt.ImageTransparentColor = Color.Magenta;
-            TsBtn_Encrypt.Name = "TsBtn_Encrypt";
-            TsBtn_Encrypt.Size = new Size(67, 32);
-            TsBtn_Encrypt.Text = "&Encrypt";
-            TsBtn_Encrypt.Click += TsBtn_Encrypt_Click;
+            TsBtn_EncryptS.Image = (Image)resources.GetObject("TsBtn_EncryptS.Image");
+            TsBtn_EncryptS.ImageTransparentColor = Color.Magenta;
+            TsBtn_EncryptS.Name = "TsBtn_EncryptS";
+            TsBtn_EncryptS.Size = new Size(135, 32);
+            TsBtn_EncryptS.Text = "&Encrypt (Symmetric)";
+            TsBtn_EncryptS.Click += TsBtn_EncryptS_Click;
             // 
-            // TsBtn_Decrypt
+            // TsBtn_DecryptS
             // 
-            TsBtn_Decrypt.Image = (Image)resources.GetObject("TsBtn_Decrypt.Image");
-            TsBtn_Decrypt.ImageTransparentColor = Color.Magenta;
-            TsBtn_Decrypt.Name = "TsBtn_Decrypt";
-            TsBtn_Decrypt.Size = new Size(68, 32);
-            TsBtn_Decrypt.Text = "&Decrypt";
-            TsBtn_Decrypt.Click += TsBtn_Decrypt_Click;
+            TsBtn_DecryptS.Image = (Image)resources.GetObject("TsBtn_DecryptS.Image");
+            TsBtn_DecryptS.ImageTransparentColor = Color.Magenta;
+            TsBtn_DecryptS.Name = "TsBtn_DecryptS";
+            TsBtn_DecryptS.Size = new Size(136, 32);
+            TsBtn_DecryptS.Text = "&Decrypt (Symmetric)";
+            TsBtn_DecryptS.Click += TsBtn_DecryptS_Click;
             // 
             // Pnl_Main
             // 
@@ -92,6 +92,7 @@
             Controls.Add(Pnl_Main);
             Controls.Add(Ts_MenuTop);
             DoubleBuffered = true;
+            MinimumSize = new Size(850, 500);
             Name = "Main";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Enigma";
@@ -105,8 +106,8 @@
 
         private ToolStrip Ts_MenuTop;
         private ToolStripButton TsBtn_Hash;
-        private ToolStripButton TsBtn_Encrypt;
-        private ToolStripButton TsBtn_Decrypt;
+        private ToolStripButton TsBtn_EncryptS;
+        private ToolStripButton TsBtn_DecryptS;
         private Panel Pnl_Main;
     }
 }

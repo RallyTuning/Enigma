@@ -45,5 +45,30 @@
             catch (Exception)
             { return "// Error //"; }
         }
+
+        internal static byte[] CutPad(this string Str, int Length)
+        {
+            try
+            {
+                byte[] Tmp = System.Text.Encoding.UTF8.GetBytes(Str);
+                return CutPad(Tmp,Length);
+            }
+            catch { return Array.Empty<byte>(); }
+        }
+
+        internal static byte[] CutPad(this byte[] B, int Length)
+        {
+            try
+            {
+                if (B.Length == Length)
+                    return B;
+
+                byte[] Ret = new byte[Length - 1 + 1];
+                Buffer.BlockCopy(B, 0, Ret, 0, Math.Min(B.Length, Length));
+
+                return Ret;
+            }
+            catch { return Array.Empty<byte>(); }
+        }
     }
 }

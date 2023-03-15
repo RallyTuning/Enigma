@@ -53,7 +53,7 @@
             Txt_Text.Location = new Point(12, 38);
             Txt_Text.Multiline = true;
             Txt_Text.Name = "Txt_Text";
-            Txt_Text.PlaceholderText = "Text to hash...";
+            Txt_Text.PlaceholderText = "Text to encrypt...";
             Txt_Text.Size = new Size(381, 83);
             Txt_Text.TabIndex = 1;
             Txt_Text.TextChanged += Txt_Text_TextChanged;

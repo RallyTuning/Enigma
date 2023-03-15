@@ -1,18 +1,12 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace Enigma.Classes
+namespace Enigma
 {
     internal class Hashy
     {
         private readonly string TheText;
         private readonly string SelSalt;
-
-        internal Hashy(string Text)
-        {
-            TheText = Text;
-            SelSalt = string.Empty;
-        }
 
         internal Hashy(string Text, string Salt)
         {
@@ -65,8 +59,7 @@ namespace Enigma.Classes
 
                 return SB.ToString();
             }
-            catch (Exception ex)
-            { return ex.Message; }
+            catch (Exception) { throw; }
         }
     }
 }

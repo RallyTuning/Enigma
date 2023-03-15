@@ -1,4 +1,4 @@
-﻿using Enigma.Classes;
+﻿using Enigma;
 
 namespace Enigma.Forms
 {
@@ -21,8 +21,12 @@ namespace Enigma.Forms
 
         private void GetCalc()
         {
-            Hashy H = new(Txt_Text.Text, Txt_Password.Text);
-            Txt_Result.Text = H.Calc();
+            try
+            {
+                Hashy H = new(Txt_Text.Text, Txt_Password.Text);
+                Txt_Result.Text = H.Calc();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
     }
 }
