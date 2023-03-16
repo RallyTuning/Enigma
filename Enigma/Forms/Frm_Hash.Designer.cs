@@ -96,6 +96,7 @@
             // 
             // Txt_FilePath
             // 
+            Txt_FilePath.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             Txt_FilePath.BackColor = SystemColors.Window;
             Txt_FilePath.Location = new Point(93, 127);
             Txt_FilePath.Name = "Txt_FilePath";

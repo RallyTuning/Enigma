@@ -44,33 +44,38 @@ namespace Enigma
 
                 StringBuilder SB = new();
 
-                SB.AppendLine("# MD5");
-                SB.AppendLine($"HEX:      {TempBytesMD5.ToHex()}");
-                SB.AppendLine($"BASE64:   {TempBytesMD5.ToBase64()}");
+                SB.AppendLine("[MD5]");
+                SB.AppendLine($"- HEX:      {TempBytesMD5.ToHex()}");
+                SB.AppendLine($"- BASE64:   {TempBytesMD5.ToBase64()}");
+                SB.AppendLine($"- BINARY:   {TempBytesMD5.ToBinary()}");
                 //SB.AppendLine($"STRING:   {TempBytesMD5.ToRString()}");
                 SB.AppendLine();
 
-                SB.AppendLine("# SHA1");
-                SB.AppendLine($"HEX:      {TempBytesSHA1.ToHex()}");
-                SB.AppendLine($"BASE64:   {TempBytesSHA1.ToBase64()}");
+                SB.AppendLine("[SHA1]");
+                SB.AppendLine($"- HEX:      {TempBytesSHA1.ToHex()}");
+                SB.AppendLine($"- BASE64:   {TempBytesSHA1.ToBase64()}");
+                SB.AppendLine($"- BINARY:   {TempBytesSHA1.ToBinary()}");
                 //SB.AppendLine($"STRING:   {TempBytesSHA1.ToRString()}");
                 SB.AppendLine();
 
-                SB.AppendLine("# SHA256");
-                SB.AppendLine($"HEX:      {TempBytesSHA256.ToHex()}");
-                SB.AppendLine($"BASE64:   {TempBytesSHA256.ToBase64()}");
+                SB.AppendLine("[SHA256]");
+                SB.AppendLine($"- HEX:      {TempBytesSHA256.ToHex()}");
+                SB.AppendLine($"- BASE64:   {TempBytesSHA256.ToBase64()}");
+                SB.AppendLine($"- BINARY:   {TempBytesSHA256.ToBinary()}");
                 //SB.AppendLine($"STRING:   {TempBytesSHA256.ToRString()}");
                 SB.AppendLine();
 
-                SB.AppendLine("# SHA384");
-                SB.AppendLine($"HEX:      {TempBytesSHA384.ToHex()}");
-                SB.AppendLine($"BASE64:   {TempBytesSHA384.ToBase64()}");
+                SB.AppendLine("[SHA384]");
+                SB.AppendLine($"- HEX:      {TempBytesSHA384.ToHex()}");
+                SB.AppendLine($"- BASE64:   {TempBytesSHA384.ToBase64()}");
+                SB.AppendLine($"- BINARY:   {TempBytesSHA384.ToBinary()}");
                 //SB.AppendLine($"STRING:   {TempBytesSHA384.ToRString()}");
                 SB.AppendLine();
 
-                SB.AppendLine("# SHA512");
-                SB.AppendLine($"HEX:      {TempBytesSHA512.ToHex()}");
-                SB.AppendLine($"BASE64:   {TempBytesSHA512.ToBase64()}");
+                SB.AppendLine("[SHA512]");
+                SB.AppendLine($"- HEX:      {TempBytesSHA512.ToHex()}");
+                SB.AppendLine($"- BASE64:   {TempBytesSHA512.ToBase64()}");
+                SB.AppendLine($"- BINARY:   {TempBytesSHA512.ToBinary()}");
                 //SB.AppendLine($"STRING:   {TempBytesSHA512.ToRString()}");
 
                 return SB.ToString();

@@ -47,7 +47,7 @@
             label1.Name = "label1";
             label1.Size = new Size(834, 30);
             label1.TabIndex = 1;
-            label1.Text = "Encrypt";
+            label1.Text = "Encrypt  (Symmetric)";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Txt_Result
@@ -87,6 +87,7 @@
             // 
             // Txt_IV
             // 
+            Txt_IV.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             Txt_IV.Location = new Point(440, 67);
             Txt_IV.MaxLength = 16;
             Txt_IV.Name = "Txt_IV";
@@ -97,6 +98,7 @@
             // 
             // Cmb_Type
             // 
+            Cmb_Type.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             Cmb_Type.DropDownStyle = ComboBoxStyle.DropDownList;
             Cmb_Type.FormattingEnabled = true;
             Cmb_Type.Items.AddRange(new object[] { "HEX", "Base64", "Binary", "String" });
@@ -108,6 +110,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Location = new Point(440, 99);
             label2.Name = "label2";
