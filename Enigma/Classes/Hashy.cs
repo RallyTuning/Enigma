@@ -5,20 +5,36 @@ namespace Enigma
 {
     internal class Hashy
     {
-        private readonly string TheText;
-        private readonly string SelSalt;
+        private readonly byte[] TheBytes = Array.Empty<byte>();
+        private readonly string TheText = string.Empty;
+        private readonly string TheSalt = string.Empty;
 
         internal Hashy(string Text, string Salt)
         {
             TheText = Text;
-            SelSalt = Salt;
+            TheSalt = Salt;
+        }
+
+        internal Hashy(byte[] Bytes, string Salt)
+        {
+            TheBytes = Bytes;
+            TheSalt = Salt;
         }
 
         internal string Calc()
         {
             try
             {
-                byte[] TextToByte = string.IsNullOrEmpty(SelSalt) ? Encoding.UTF8.GetBytes(TheText) : Encoding.UTF8.GetBytes(SelSalt + TheText);
+                byte[] TextToByte;
+
+                if (TheBytes == Array.Empty<byte>())
+                {
+                    TextToByte = string.IsNullOrEmpty(TheSalt) ? Encoding.UTF8.GetBytes(TheText) : Encoding.UTF8.GetBytes(TheSalt + TheText);
+                }
+                else
+                {
+                    TextToByte = TheBytes;
+                }
 
                 byte[] TempBytesMD5 = MD5.Create().ComputeHash(TextToByte);
                 byte[] TempBytesSHA1 = SHA1.Create().ComputeHash(TextToByte);

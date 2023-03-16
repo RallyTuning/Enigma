@@ -1,4 +1,4 @@
-﻿namespace Enigma.Forms
+﻿namespace Enigma
 {
     partial class Frm_Encrypt
     {
@@ -32,7 +32,9 @@
             Txt_Result = new TextBox();
             Txt_Password = new TextBox();
             Txt_Text = new TextBox();
-            button1 = new Button();
+            Txt_IV = new TextBox();
+            Cmb_Type = new ComboBox();
+            label2 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -60,16 +62,15 @@
             Txt_Result.ScrollBars = ScrollBars.Both;
             Txt_Result.Size = new Size(810, 251);
             Txt_Result.TabIndex = 2;
-            Txt_Result.WordWrap = false;
             // 
             // Txt_Password
             // 
             Txt_Password.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             Txt_Password.Location = new Point(440, 38);
-            Txt_Password.Multiline = true;
+            Txt_Password.MaxLength = 32;
             Txt_Password.Name = "Txt_Password";
-            Txt_Password.PlaceholderText = "Optional password...";
-            Txt_Password.Size = new Size(382, 83);
+            Txt_Password.PlaceholderText = "Optional salt (password)...";
+            Txt_Password.Size = new Size(382, 23);
             Txt_Password.TabIndex = 3;
             Txt_Password.TextChanged += Txt_Password_TextChanged;
             // 
@@ -79,27 +80,49 @@
             Txt_Text.Location = new Point(12, 38);
             Txt_Text.Multiline = true;
             Txt_Text.Name = "Txt_Text";
-            Txt_Text.PlaceholderText = "Text to hash...";
-            Txt_Text.Size = new Size(381, 83);
+            Txt_Text.PlaceholderText = "Text to encrypt...";
+            Txt_Text.Size = new Size(381, 104);
             Txt_Text.TabIndex = 4;
             Txt_Text.TextChanged += Txt_Text_TextChanged;
             // 
-            // button1
+            // Txt_IV
             // 
-            button1.Location = new Point(383, 127);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 5;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            Txt_IV.Location = new Point(440, 67);
+            Txt_IV.MaxLength = 16;
+            Txt_IV.Name = "Txt_IV";
+            Txt_IV.PlaceholderText = "Optional IV (Initialization Vector)...";
+            Txt_IV.Size = new Size(382, 23);
+            Txt_IV.TabIndex = 6;
+            Txt_IV.TextChanged += Txt_IV_TextChanged;
+            // 
+            // Cmb_Type
+            // 
+            Cmb_Type.DropDownStyle = ComboBoxStyle.DropDownList;
+            Cmb_Type.FormattingEnabled = true;
+            Cmb_Type.Items.AddRange(new object[] { "HEX", "Base64", "Binary", "String" });
+            Cmb_Type.Location = new Point(520, 96);
+            Cmb_Type.Name = "Cmb_Type";
+            Cmb_Type.Size = new Size(144, 23);
+            Cmb_Type.TabIndex = 11;
+            Cmb_Type.SelectedIndexChanged += Cmb_Type_SelectedIndexChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(440, 99);
+            label2.Name = "label2";
+            label2.Size = new Size(74, 15);
+            label2.TabIndex = 10;
+            label2.Text = "Output type:";
             // 
             // Frm_Encrypt
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(834, 426);
-            Controls.Add(button1);
+            Controls.Add(Cmb_Type);
+            Controls.Add(label2);
+            Controls.Add(Txt_IV);
             Controls.Add(Txt_Result);
             Controls.Add(Txt_Password);
             Controls.Add(Txt_Text);
@@ -108,6 +131,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "Frm_Encrypt";
             Text = "Encrypt";
+            Load += Frm_Encrypt_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -118,6 +142,8 @@
         private TextBox Txt_Result;
         private TextBox Txt_Password;
         private TextBox Txt_Text;
-        private Button button1;
+        private TextBox Txt_IV;
+        private ComboBox Cmb_Type;
+        private Label label2;
     }
 }

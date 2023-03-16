@@ -3,25 +3,6 @@
     internal static class Functions
     {
 
-        internal static bool OpenForm(this Panel P, Form F)
-        {
-            try
-            {
-                P.SuspendLayout();
-                P.Controls.Clear();
-
-                F.TopLevel = false;         // First
-                P.Controls.Add(F);         // Then
-                F.Dock = DockStyle.Fill;  // Finally
-                F.Show();
-
-                P.ResumeLayout();
-
-                return true;
-            }
-            catch (Exception) { return false; }
-        }
-
         internal static string ToHex(this byte[] Bytes)
         {
             try
@@ -34,6 +15,14 @@
         {
             try
             { return Convert.ToBase64String(Bytes); }
+            catch (Exception)
+            { return "// Error //"; }
+        }
+
+        internal static string ToBinary(this byte[] Bytes)
+        {
+            try
+            { return string.Join(" ", Bytes.Reverse().Select(x => Convert.ToString(x, 2).PadLeft(8, '0'))); }
             catch (Exception)
             { return "// Error //"; }
         }
@@ -51,7 +40,18 @@
             try
             {
                 byte[] Tmp = System.Text.Encoding.UTF8.GetBytes(Str);
-                return CutPad(Tmp,Length);
+                return CutPad(Tmp, Length);
+            }
+            catch { return Array.Empty<byte>(); }
+        }
+
+        internal static byte[] MergeByte(this byte[] B, byte[] Merge)
+        {
+            try
+            {
+                Buffer.BlockCopy(B, 0, Merge, 0, Math.Min(B.Length, Merge. Length));
+
+                return Merge;
             }
             catch { return Array.Empty<byte>(); }
         }
@@ -63,7 +63,7 @@
                 if (B.Length == Length)
                     return B;
 
-                byte[] Ret = new byte[Length - 1 + 1];
+                byte[] Ret = new byte[Length];
                 Buffer.BlockCopy(B, 0, Ret, 0, Math.Min(B.Length, Length));
 
                 return Ret;

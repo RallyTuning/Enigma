@@ -34,6 +34,10 @@
             TsBtn_EncryptS = new ToolStripButton();
             TsBtn_DecryptS = new ToolStripButton();
             Pnl_Main = new Panel();
+            toolStripSeparator1 = new ToolStripSeparator();
+            toolStripSeparator2 = new ToolStripSeparator();
+            TsBtn_EncryptA = new ToolStripButton();
+            TsBtn_DecryptA = new ToolStripButton();
             Ts_MenuTop.SuspendLayout();
             SuspendLayout();
             // 
@@ -41,7 +45,7 @@
             // 
             Ts_MenuTop.AutoSize = false;
             Ts_MenuTop.GripStyle = ToolStripGripStyle.Hidden;
-            Ts_MenuTop.Items.AddRange(new ToolStripItem[] { TsBtn_Hash, TsBtn_EncryptS, TsBtn_DecryptS });
+            Ts_MenuTop.Items.AddRange(new ToolStripItem[] { TsBtn_Hash, toolStripSeparator1, TsBtn_EncryptS, TsBtn_DecryptS, toolStripSeparator2, TsBtn_EncryptA, TsBtn_DecryptA });
             Ts_MenuTop.Location = new Point(0, 0);
             Ts_MenuTop.Name = "Ts_MenuTop";
             Ts_MenuTop.Size = new Size(834, 35);
@@ -84,6 +88,32 @@
             Pnl_Main.Size = new Size(834, 426);
             Pnl_Main.TabIndex = 1;
             // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(6, 35);
+            // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(6, 35);
+            // 
+            // TsBtn_EncryptA
+            // 
+            TsBtn_EncryptA.Image = (Image)resources.GetObject("TsBtn_EncryptA.Image");
+            TsBtn_EncryptA.ImageTransparentColor = Color.Magenta;
+            TsBtn_EncryptA.Name = "TsBtn_EncryptA";
+            TsBtn_EncryptA.Size = new Size(142, 32);
+            TsBtn_EncryptA.Text = "E&ncrypt (Asymmetric)";
+            // 
+            // TsBtn_DecryptA
+            // 
+            TsBtn_DecryptA.Image = (Image)resources.GetObject("TsBtn_DecryptA.Image");
+            TsBtn_DecryptA.ImageTransparentColor = Color.Magenta;
+            TsBtn_DecryptA.Name = "TsBtn_DecryptA";
+            TsBtn_DecryptA.Size = new Size(143, 32);
+            TsBtn_DecryptA.Text = "De&crypt (Asymmetric)";
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -109,5 +139,9 @@
         private ToolStripButton TsBtn_EncryptS;
         private ToolStripButton TsBtn_DecryptS;
         private Panel Pnl_Main;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripButton TsBtn_EncryptA;
+        private ToolStripButton TsBtn_DecryptA;
     }
 }

@@ -50,8 +50,8 @@ namespace Enigma
 
 
                 using Aes AesAlg = Aes.Create();
-                AesAlg.Key = Encoding.UTF8.GetBytes("12345678901234561234567890123456");// Encoding.UTF8.GetBytes(Key).CutPad(32);
-                AesAlg.IV = Encoding.UTF8.GetBytes("1234567890123456");//Encoding.UTF8.GetBytes(IV).CutPad(16);
+                AesAlg.Key = Encoding.UTF8.GetBytes(Key).CutPad(32);
+                AesAlg.IV = Encoding.UTF8.GetBytes(IV).CutPad(16);
 
                 ICryptoTransform Encryptor = AesAlg.CreateEncryptor(AesAlg.Key, AesAlg.IV);
 
@@ -81,8 +81,8 @@ namespace Enigma
             try
             {
                 using Aes AesAlg = Aes.Create();
-                AesAlg.Key = Encoding.UTF8.GetBytes("12345678901234561234567890123456");//Encoding.UTF8.GetBytes(Key).CutPad(32);
-                AesAlg.IV = Encoding.UTF8.GetBytes("1234567890123456");//Encoding.UTF8.GetBytes(IV).CutPad(16);
+                AesAlg.Key = Encoding.UTF8.GetBytes(Key).CutPad(32);
+                AesAlg.IV = Encoding.UTF8.GetBytes(IV).CutPad(16);
 
                 ICryptoTransform Decryptor = AesAlg.CreateDecryptor(AesAlg.Key, AesAlg.IV);
 
