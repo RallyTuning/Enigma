@@ -57,7 +57,7 @@
             Txt_Text.Name = "Txt_Text";
             Txt_Text.PlaceholderText = "Text to hash...";
             Txt_Text.Size = new Size(381, 83);
-            Txt_Text.TabIndex = 1;
+            Txt_Text.TabIndex = 0;
             Txt_Text.TextChanged += Txt_Text_TextChanged;
             // 
             // Txt_Result
@@ -71,7 +71,7 @@
             Txt_Result.ReadOnly = true;
             Txt_Result.ScrollBars = ScrollBars.Both;
             Txt_Result.Size = new Size(810, 251);
-            Txt_Result.TabIndex = 1;
+            Txt_Result.TabIndex = 4;
             Txt_Result.WordWrap = false;
             // 
             // Txt_Password

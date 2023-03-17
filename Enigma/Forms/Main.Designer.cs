@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             Ts_MenuTop = new ToolStrip();
             TsBtn_Hash = new ToolStripButton();
+            toolStripSeparator1 = new ToolStripSeparator();
             TsBtn_EncryptS = new ToolStripButton();
             TsBtn_DecryptS = new ToolStripButton();
-            Pnl_Main = new Panel();
-            toolStripSeparator1 = new ToolStripSeparator();
             toolStripSeparator2 = new ToolStripSeparator();
             TsBtn_EncryptA = new ToolStripButton();
             TsBtn_DecryptA = new ToolStripButton();
+            Pnl_Main = new Panel();
             Ts_MenuTop.SuspendLayout();
             SuspendLayout();
             // 
@@ -60,7 +60,12 @@
             TsBtn_Hash.Name = "TsBtn_Hash";
             TsBtn_Hash.Size = new Size(54, 32);
             TsBtn_Hash.Text = "&Hash";
-            TsBtn_Hash.Click += TsBtn_Hash_Click;
+            TsBtn_Hash.Click += TsBtnS_Click;
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(6, 35);
             // 
             // TsBtn_EncryptS
             // 
@@ -69,7 +74,7 @@
             TsBtn_EncryptS.Name = "TsBtn_EncryptS";
             TsBtn_EncryptS.Size = new Size(135, 32);
             TsBtn_EncryptS.Text = "&Encrypt (Symmetric)";
-            TsBtn_EncryptS.Click += TsBtn_EncryptS_Click;
+            TsBtn_EncryptS.Click += TsBtnS_Click;
             // 
             // TsBtn_DecryptS
             // 
@@ -78,20 +83,7 @@
             TsBtn_DecryptS.Name = "TsBtn_DecryptS";
             TsBtn_DecryptS.Size = new Size(136, 32);
             TsBtn_DecryptS.Text = "&Decrypt (Symmetric)";
-            TsBtn_DecryptS.Click += TsBtn_DecryptS_Click;
-            // 
-            // Pnl_Main
-            // 
-            Pnl_Main.Dock = DockStyle.Fill;
-            Pnl_Main.Location = new Point(0, 35);
-            Pnl_Main.Name = "Pnl_Main";
-            Pnl_Main.Size = new Size(834, 426);
-            Pnl_Main.TabIndex = 1;
-            // 
-            // toolStripSeparator1
-            // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(6, 35);
+            TsBtn_DecryptS.Click += TsBtnS_Click;
             // 
             // toolStripSeparator2
             // 
@@ -105,6 +97,7 @@
             TsBtn_EncryptA.Name = "TsBtn_EncryptA";
             TsBtn_EncryptA.Size = new Size(142, 32);
             TsBtn_EncryptA.Text = "E&ncrypt (Asymmetric)";
+            TsBtn_EncryptA.Click += TsBtnS_Click;
             // 
             // TsBtn_DecryptA
             // 
@@ -113,6 +106,15 @@
             TsBtn_DecryptA.Name = "TsBtn_DecryptA";
             TsBtn_DecryptA.Size = new Size(143, 32);
             TsBtn_DecryptA.Text = "De&crypt (Asymmetric)";
+            TsBtn_DecryptA.Click += TsBtnS_Click;
+            // 
+            // Pnl_Main
+            // 
+            Pnl_Main.Dock = DockStyle.Fill;
+            Pnl_Main.Location = new Point(0, 35);
+            Pnl_Main.Name = "Pnl_Main";
+            Pnl_Main.Size = new Size(834, 426);
+            Pnl_Main.TabIndex = 1;
             // 
             // Main
             // 

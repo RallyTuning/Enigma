@@ -5,50 +5,10 @@ namespace Enigma
 {
     internal class SymmetricEncryption
     {
-
-        //internal static void SymmetricEncryptionDemo()
-        //{
-        //    Console.WriteLine("***** Symmetric encryption demo *****");
-
-        //    var unencryptedMessage = "To be or not to be, that is the question, whether tis nobler in the...";
-        //    Console.WriteLine("Unencrypted message: " + unencryptedMessage);
-
-        //    // 1. Create a key (shared key between sender and reciever).
-        //    byte[] key, iv;
-        //    using (Aes aesAlg = Aes.Create())
-        //    {
-        //        key = aesAlg.Key;
-        //        iv = aesAlg.IV;
-        //    }
-
-        //    // 2. Sender: Encrypt message using key
-        //    byte[] encryptedMessage = Encrypt(unencryptedMessage, "", "");
-        //    Console.WriteLine("Sending encrypted message: " + Convert.ToHexString(encryptedMessage));
-
-        //    // 3. Receiver: Decrypt message using same key
-        //    string decryptedMessage = Decrypt(encryptedMessage, "", "");
-        //    Console.WriteLine("Recieved and decrypted message: " + decryptedMessage);
-
-        //    Console.Write(Environment.NewLine);
-        //}
-
-
-
         internal byte[] Encrypt(string Message, string Key, string IV)
         {
             try
             {
-                byte[] key2, iv2;
-                using (Aes aesAlg2 = Aes.Create())
-                {
-                    key2 = aesAlg2.Key;
-                    iv2 = aesAlg2.IV;
-                }
-
-
-
-
-
                 using Aes AesAlg = Aes.Create();
                 AesAlg.Key = Encoding.UTF8.GetBytes(Key).CutPad(32);
                 AesAlg.IV = Encoding.UTF8.GetBytes(IV).CutPad(16);

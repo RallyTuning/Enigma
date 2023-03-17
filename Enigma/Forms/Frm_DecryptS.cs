@@ -2,9 +2,9 @@
 
 namespace Enigma
 {
-    public partial class Frm_Decrypt : Form
+    public partial class Frm_DecryptS : Form
     {
-        public Frm_Decrypt()
+        public Frm_DecryptS()
         {
             InitializeComponent();
         }

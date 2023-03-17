@@ -1,6 +1,6 @@
 ﻿namespace Enigma
 {
-    partial class Frm_Encrypt
+    partial class Frm_DecryptS
     {
         /// <summary>
         /// Required designer variable.
@@ -33,13 +33,13 @@
             Txt_Password = new TextBox();
             Txt_Text = new TextBox();
             Txt_IV = new TextBox();
-            Cmb_Type = new ComboBox();
             label2 = new Label();
+            Cmb_Type = new ComboBox();
             SuspendLayout();
             // 
             // label1
             // 
-            label1.BackColor = Color.MediumSeaGreen;
+            label1.BackColor = Color.Coral;
             label1.Dock = DockStyle.Top;
             label1.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.WhiteSmoke;
@@ -47,7 +47,7 @@
             label1.Name = "label1";
             label1.Size = new Size(834, 30);
             label1.TabIndex = 1;
-            label1.Text = "Encrypt  (Symmetric)";
+            label1.Text = "Decrypt  (Symmetric)";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Txt_Result
@@ -61,7 +61,7 @@
             Txt_Result.ReadOnly = true;
             Txt_Result.ScrollBars = ScrollBars.Both;
             Txt_Result.Size = new Size(810, 251);
-            Txt_Result.TabIndex = 2;
+            Txt_Result.TabIndex = 4;
             // 
             // Txt_Password
             // 
@@ -71,7 +71,7 @@
             Txt_Password.Name = "Txt_Password";
             Txt_Password.PlaceholderText = "Optional salt (password)...";
             Txt_Password.Size = new Size(382, 23);
-            Txt_Password.TabIndex = 3;
+            Txt_Password.TabIndex = 1;
             Txt_Password.TextChanged += Txt_Password_TextChanged;
             // 
             // Txt_Text
@@ -80,9 +80,9 @@
             Txt_Text.Location = new Point(12, 38);
             Txt_Text.Multiline = true;
             Txt_Text.Name = "Txt_Text";
-            Txt_Text.PlaceholderText = "Text to encrypt...";
+            Txt_Text.PlaceholderText = "Text to decrypt...";
             Txt_Text.Size = new Size(381, 104);
-            Txt_Text.TabIndex = 4;
+            Txt_Text.TabIndex = 0;
             Txt_Text.TextChanged += Txt_Text_TextChanged;
             // 
             // Txt_IV
@@ -93,20 +93,8 @@
             Txt_IV.Name = "Txt_IV";
             Txt_IV.PlaceholderText = "Optional IV (Initialization Vector)...";
             Txt_IV.Size = new Size(382, 23);
-            Txt_IV.TabIndex = 6;
+            Txt_IV.TabIndex = 2;
             Txt_IV.TextChanged += Txt_IV_TextChanged;
-            // 
-            // Cmb_Type
-            // 
-            Cmb_Type.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            Cmb_Type.DropDownStyle = ComboBoxStyle.DropDownList;
-            Cmb_Type.FormattingEnabled = true;
-            Cmb_Type.Items.AddRange(new object[] { "HEX", "Base64", "Binary", "String" });
-            Cmb_Type.Location = new Point(520, 96);
-            Cmb_Type.Name = "Cmb_Type";
-            Cmb_Type.Size = new Size(144, 23);
-            Cmb_Type.TabIndex = 11;
-            Cmb_Type.SelectedIndexChanged += Cmb_Type_SelectedIndexChanged;
             // 
             // label2
             // 
@@ -114,11 +102,23 @@
             label2.AutoSize = true;
             label2.Location = new Point(440, 99);
             label2.Name = "label2";
-            label2.Size = new Size(74, 15);
-            label2.TabIndex = 10;
-            label2.Text = "Output type:";
+            label2.Size = new Size(64, 15);
+            label2.TabIndex = 8;
+            label2.Text = "Input type:";
             // 
-            // Frm_Encrypt
+            // Cmb_Type
+            // 
+            Cmb_Type.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            Cmb_Type.DropDownStyle = ComboBoxStyle.DropDownList;
+            Cmb_Type.FormattingEnabled = true;
+            Cmb_Type.Items.AddRange(new object[] { "HEX", "Base64" });
+            Cmb_Type.Location = new Point(520, 96);
+            Cmb_Type.Name = "Cmb_Type";
+            Cmb_Type.Size = new Size(144, 23);
+            Cmb_Type.TabIndex = 3;
+            Cmb_Type.SelectedIndexChanged += Cmb_Type_SelectedIndexChanged;
+            // 
+            // Frm_Decrypt
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -132,9 +132,9 @@
             Controls.Add(label1);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Frm_Encrypt";
-            Text = "Encrypt";
-            Load += Frm_Encrypt_Load;
+            Name = "Frm_DecryptS";
+            Text = "Decrypt Symmetric";
+            Load += Frm_Decrypt_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -146,7 +146,7 @@
         private TextBox Txt_Password;
         private TextBox Txt_Text;
         private TextBox Txt_IV;
-        private ComboBox Cmb_Type;
         private Label label2;
+        private ComboBox Cmb_Type;
     }
 }

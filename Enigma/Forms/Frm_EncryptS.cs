@@ -1,8 +1,8 @@
 ﻿namespace Enigma
 {
-    public partial class Frm_Encrypt : Form
+    public partial class Frm_EncryptS : Form
     {
-        public Frm_Encrypt()
+        public Frm_EncryptS()
         {
             InitializeComponent();
         }

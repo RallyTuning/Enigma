@@ -54,8 +54,8 @@ namespace Enigma
                     byte[] F = MS.ToArray();
                     byte[] M = new byte[S.Length + F.Length];
 
-                    System.Buffer.BlockCopy(S, 0, M, 0, S.Length); //new byte [Encoding.UTF8.GetBytes(Txt_Password.Text) + MS.ToArray()];
-                    System.Buffer.BlockCopy(F, 0, M, S.Length, F.Length);
+                    Buffer.BlockCopy(S, 0, M, 0, S.Length);
+                    Buffer.BlockCopy(F, 0, M, S.Length, F.Length);
 
                     Hashy HF = new(M, Txt_Password.Text);
                     Txt_Result.Text = HF.Calc();
@@ -67,7 +67,6 @@ namespace Enigma
                     Hashy HS = new(Txt_Text.Text, Txt_Password.Text);
                     Txt_Result.Text = HS.Calc();
                 }
-
             }
             catch (Exception ex) { Txt_Result.Text = $"/// ERROR ///{Environment.NewLine}{Environment.NewLine}{ex.Message}"; }
         }

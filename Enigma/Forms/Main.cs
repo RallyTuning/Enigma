@@ -19,31 +19,14 @@ namespace Enigma
             catch (Exception ex) { MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
-        private void TsBtn_Hash_Click(object sender, EventArgs e)
+        private void TsBtnS_Click(object sender, EventArgs e)
         {
             try
             {
-                ParseForm("Frm_Hash", Action.Open);
+                ToolStripButton TsBtn = (ToolStripButton)sender;
+                ParseForm($"Frm_{TsBtn.Name.Split("_").Last()}", Action.Open);
             }
-            catch (Exception ex) { MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        }
-
-        private void TsBtn_EncryptS_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ParseForm("Frm_Encrypt", Action.Open);
-            }
-            catch (Exception ex) { MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        }
-
-        private void TsBtn_DecryptS_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ParseForm("Frm_Decrypt", Action.Open);
-            }
-            catch (Exception ex) { MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
 
@@ -55,7 +38,7 @@ namespace Enigma
 
         internal void LoadAllForms()
         {
-            List<Form> FormList = new() { new Frm_Hash(), new Frm_Encrypt(), new Frm_Decrypt() };
+            List<Form> FormList = new() { new Frm_Hash(), new Frm_EncryptS(), new Frm_DecryptS(),new Frm_EncryptA(), new Frm_DecryptA() };
 
             foreach (Form F in FormList)
             {
