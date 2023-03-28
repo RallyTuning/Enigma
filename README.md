@@ -1,2 +1,2 @@
 # Enigma
-All Hash and Encryption in .Net Core
+Hash and AES Encryption in .Net Core
