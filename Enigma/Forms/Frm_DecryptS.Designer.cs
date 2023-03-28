@@ -100,7 +100,7 @@
             // 
             label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new Point(440, 99);
+            label2.Location = new Point(608, 137);
             label2.Name = "label2";
             label2.Size = new Size(64, 15);
             label2.TabIndex = 8;
@@ -112,13 +112,13 @@
             Cmb_Type.DropDownStyle = ComboBoxStyle.DropDownList;
             Cmb_Type.FormattingEnabled = true;
             Cmb_Type.Items.AddRange(new object[] { "HEX", "Base64" });
-            Cmb_Type.Location = new Point(520, 96);
+            Cmb_Type.Location = new Point(678, 134);
             Cmb_Type.Name = "Cmb_Type";
             Cmb_Type.Size = new Size(144, 23);
             Cmb_Type.TabIndex = 3;
             Cmb_Type.SelectedIndexChanged += Cmb_Type_SelectedIndexChanged;
             // 
-            // Frm_Decrypt
+            // Frm_DecryptS
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;

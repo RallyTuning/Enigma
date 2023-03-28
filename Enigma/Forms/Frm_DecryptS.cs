@@ -39,13 +39,13 @@ namespace Enigma
             Calc();
         }
 
+
         private void Calc()
         {
             try
             {
                 if (string.IsNullOrEmpty(Txt_Text.Text)) { Txt_Result.Text = ""; return; }
 
-                SymmetricEncryption SE = new();
                 byte[] ChipBytes = Array.Empty<byte>();
 
                 switch (Cmb_Type.SelectedIndex)
@@ -60,7 +60,7 @@ namespace Enigma
                         return;
                 }
 
-                string DecryptedMessage = SE.Decrypt(ChipBytes, Txt_Password.Text, Txt_IV.Text);
+                string DecryptedMessage = SymmetricEncryption.Decrypt(ChipBytes, Txt_Password.Text, Txt_IV.Text);
                 Txt_Result.Text = DecryptedMessage;
             }
             catch (Exception ex) { Txt_Result.Text = $"/// ERROR ///{Environment.NewLine}{Environment.NewLine}{ex.Message}"; }

@@ -36,14 +36,14 @@
             Calc();
         }
 
+
         private void Calc()
         {
             try
             {
                 if (string.IsNullOrEmpty(Txt_Text.Text)) { Txt_Result.Text = ""; return; }
 
-                SymmetricEncryption SE = new();
-                byte[] EncryptedMessage = SE.Encrypt(Txt_Text.Text, Txt_Password.Text, Txt_IV.Text);
+                byte[] EncryptedMessage = SymmetricEncryption.Encrypt(Txt_Text.Text, Txt_Password.Text, Txt_IV.Text);
 
 
                 Txt_Result.Text = Cmb_Type.SelectedIndex switch

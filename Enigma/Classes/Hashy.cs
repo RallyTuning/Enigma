@@ -5,9 +5,12 @@ namespace Enigma
 {
     internal class Hashy
     {
+
         private readonly byte[] TheBytes = Array.Empty<byte>();
         private readonly string TheText = string.Empty;
         private readonly string TheSalt = string.Empty;
+
+
 
         internal Hashy(string Text, string Salt)
         {
@@ -15,11 +18,13 @@ namespace Enigma
             TheSalt = Salt;
         }
 
+
         internal Hashy(byte[] Bytes, string Salt)
         {
             TheBytes = Bytes;
             TheSalt = Salt;
         }
+
 
         internal string Calc()
         {
@@ -82,5 +87,6 @@ namespace Enigma
             }
             catch (Exception) { throw; }
         }
+
     }
 }

@@ -5,7 +5,8 @@ namespace Enigma
 {
     internal class SymmetricEncryption
     {
-        internal byte[] Encrypt(string Message, string Key, string IV)
+
+        internal static byte[] Encrypt(string Message, string Key, string IV)
         {
             try
             {
@@ -27,7 +28,8 @@ namespace Enigma
             catch (Exception) { throw; }
         }
 
-        internal string Decrypt(string CipherText, string Key, string IV)
+
+        internal static string Decrypt(string CipherText, string Key, string IV)
         {
             try
             {
@@ -36,7 +38,8 @@ namespace Enigma
             catch (Exception) { throw; }
         }
 
-        internal string Decrypt(byte[] ChiperBytes, string Key, string IV)
+
+        internal static string Decrypt(byte[] ChiperBytes, string Key, string IV)
         {
             try
             {
@@ -54,5 +57,6 @@ namespace Enigma
             }
             catch (Exception) { throw; }
         }
+
     }
 }
