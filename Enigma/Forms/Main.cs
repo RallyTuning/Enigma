@@ -1,5 +1,3 @@
-using Enigma;
-
 namespace Enigma
 {
     public partial class Main : Form
@@ -15,6 +13,8 @@ namespace Enigma
             {
                 LoadAllForms();
                 ParseForm("Frm_Hash", Action.Open);
+
+                AsymmetricEncryption.CreatAsymmetriceKeys();
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
@@ -38,7 +38,7 @@ namespace Enigma
 
         internal void LoadAllForms()
         {
-            List<Form> FormList = new() { new Frm_Hash(), new Frm_EncryptS(), new Frm_DecryptS(),new Frm_EncryptA(), new Frm_DecryptA() };
+            List<Form> FormList = new() { new Frm_Hash(), new Frm_EncryptS(), new Frm_DecryptS(), new Frm_EncryptA(), new Frm_DecryptA() };
 
             foreach (Form F in FormList)
             {

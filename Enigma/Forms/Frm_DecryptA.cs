@@ -18,25 +18,31 @@ namespace Enigma
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
-        private void Txt_Text_TextChanged(object sender, EventArgs e)
+        private void Txt_Text_TextChanged_1(object sender, EventArgs e)
         {
             Calc();
         }
 
-        private void Txt_Password_TextChanged(object sender, EventArgs e)
+        private void Cmb_Type_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             Calc();
         }
 
-        private void Txt_IV_TextChanged(object sender, EventArgs e)
+
+        private void Btn_ShowKeys_Click(object sender, EventArgs e)
         {
-            Calc();
+
         }
 
-        private void Cmb_Type_SelectedIndexChanged(object sender, EventArgs e)
+        private void Btn_GenerateKeys_Click(object sender, EventArgs e)
         {
-            Calc();
+            try
+            {
+                AsymmetricEncryption.CreatAsymmetriceKeys();
+            }
+            catch (Exception ex) { Txt_Result.Text = $"/// ERROR ///{Environment.NewLine}{Environment.NewLine}{ex.Message}"; }
         }
+
 
 
         private void Calc()
@@ -64,10 +70,11 @@ namespace Enigma
                 //PrivateAndPublicKeys = RsaAlg.ImportRSAPrivateKey(true);
                 //PublicKeyOnly = RsaAlg.ImportRSAPublicKey(true);
 
-                //string DecryptedMessage = AE.Decrypt(ChipBytes, privateAndPublicKeys);
-                //Txt_Result.Text = DecryptedMessage;
+                string DecryptedMessage = AsymmetricEncryption.Decrypt(ChipBytes, AsymmetricEncryption.PrivateAndPublicKeys);
+                Txt_Result.Text = DecryptedMessage;
             }
             catch (Exception ex) { Txt_Result.Text = $"/// ERROR ///{Environment.NewLine}{Environment.NewLine}{ex.Message}"; }
         }
+
     }
 }

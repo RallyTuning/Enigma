@@ -3,33 +3,23 @@ using System.Text;
 
 namespace Enigma
 {
-    internal class AsymmetricEncryption
+    internal static class AsymmetricEncryption
     {
 
-        //            Console.WriteLine("***** Asymmetric encryption demo *****");
-
-        //            var unencryptedMessage = "To be or not to be, that is the question, whether tis nobler in the...";
-        //            Console.WriteLine("Unencrypted message: " + unencryptedMessage);
-
-        //            // 1. Create a public / private key pair.
-        //            RSAParameters privateAndPublicKeys, publicKeyOnly;
-        //            using (var rsaAlg = RSA.Create())
-        //            {
-        //                privateAndPublicKeys = rsaAlg.ExportParameters(includePrivateParameters: true);
-        //                publicKeyOnly = rsaAlg.ExportParameters(includePrivateParameters: false);
-        //            }
-
-        //             // 2. Sender: Encrypt message using public key
-        //              var encryptedMessage = AsymmetricEncryption.Encrypt(unencryptedMessage, publicKeyOnly);
-        //              Console.WriteLine("Sending encrypted message: " + encryptedMessage.ToHex());
-
-        //           // 3. Receiver: Decrypt message using private key
-        //           var decryptedMessage = AsymmetricEncryption.Decrypt(encryptedMessage, privateAndPublicKeys);
-        //          Console.WriteLine("Recieved and decrypted message: " + decryptedMessage);
-
-        //          Console.Write(Environment.NewLine);
+        internal static RSAParameters PrivateAndPublicKeys, PublicKeyOnly;
 
 
+        internal static void CreatAsymmetriceKeys()
+        {
+            try
+            {
+                using RSA RsaAlg = RSA.Create();
+
+                PrivateAndPublicKeys = RsaAlg.ExportParameters(true);
+                PublicKeyOnly = RsaAlg.ExportParameters(false);
+            }
+            catch (Exception) { throw; }
+        }
 
 
         internal static byte[] Encrypt(string Message, RSAParameters RsaParameters)
@@ -53,6 +43,7 @@ namespace Enigma
             }
             catch (Exception) { throw; }
         }
+
 
     }
 }

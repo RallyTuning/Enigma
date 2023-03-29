@@ -1,4 +1,6 @@
 ﻿using System.Security.Cryptography;
+using System.Security.Cryptography.Pkcs;
+using System.Text;
 
 namespace Enigma
 {
@@ -39,6 +41,34 @@ namespace Enigma
             Calc();
         }
 
+        private void Btn_ShowKeys_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                StringBuilder SB = new();
+
+                SB.AppendLine("-----BEGIN PUBLIC KEY-----");
+                SB.AppendLine("WIP");
+                SB.AppendLine("-----END PUBLIC KEY-----");
+                SB.AppendLine(Environment.NewLine + Environment.NewLine);
+                SB.AppendLine("-----BEGIN RSA PRIVATE KEY-----");
+                SB.AppendLine("WIP");
+                SB.AppendLine("-----END RSA PRIVATE KEY-----");
+
+                Txt_Result.Text = SB.ToString();
+            }
+            catch (Exception ex) { Txt_Result.Text = $"/// ERROR ///{Environment.NewLine}{Environment.NewLine}{ex.Message}"; }
+        }
+
+        private void Btn_GenerateKeys_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AsymmetricEncryption.CreatAsymmetriceKeys();
+            }
+            catch (Exception ex) { Txt_Result.Text = $"/// ERROR ///{Environment.NewLine}{Environment.NewLine}{ex.Message}"; }
+        }
+
 
         private void Calc()
         {
@@ -46,13 +76,7 @@ namespace Enigma
             {
                 if (string.IsNullOrEmpty(Txt_Text.Text)) { Txt_Result.Text = ""; return; }
 
-                RSAParameters PrivateAndPublicKeys, PublicKeyOnly;
-                using RSA RsaAlg = RSA.Create();
-
-                PrivateAndPublicKeys = RsaAlg.ExportParameters(true);
-                PublicKeyOnly = RsaAlg.ExportParameters(false);
-
-                byte[] EncryptedMessage = AsymmetricEncryption.Encrypt(Txt_Text.Text, PublicKeyOnly);
+                byte[] EncryptedMessage = AsymmetricEncryption.Encrypt(Txt_Text.Text, AsymmetricEncryption.PublicKeyOnly);
 
                 Txt_Result.Text = Cmb_Type.SelectedIndex switch
                 {

@@ -58,6 +58,7 @@
             Txt_Result.Location = new Point(12, 163);
             Txt_Result.Multiline = true;
             Txt_Result.Name = "Txt_Result";
+            Txt_Result.PlaceholderText = "- Encrypted message -";
             Txt_Result.ReadOnly = true;
             Txt_Result.ScrollBars = ScrollBars.Both;
             Txt_Result.Size = new Size(810, 251);
