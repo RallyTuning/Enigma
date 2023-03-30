@@ -21,6 +21,6 @@
 
 ![Symmetric Decrypt](https://user-images.githubusercontent.com/50233545/228641117-601483f4-1071-45a0-bb41-ffdf8a2dd5b6.png)
 
-![Asymmetric Encrypt](https://user-images.githubusercontent.com/50233545/228641149-09a04d86-f9c7-49fc-a839-6ead5b407add.png)
+![Asymmetric Encrypt](https://user-images.githubusercontent.com/50233545/228924605-e2a441b4-4413-4a06-af30-c64e45ece0c7.png)
 
-![Asymmetric Decrypt](https://user-images.githubusercontent.com/50233545/228641185-7a96d642-d4c3-4fbb-be10-51b972185129.png)
+![Asymmetric Encrypt](https://user-images.githubusercontent.com/50233545/228924657-58f880e9-5ef0-4bc9-b141-b08acc3b485b.png)
