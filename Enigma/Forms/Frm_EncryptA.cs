@@ -1,8 +1,4 @@
-﻿using System.Security.Cryptography;
-using System.Security.Cryptography.Pkcs;
-using System.Text;
-
-namespace Enigma
+﻿namespace Enigma
 {
     public partial class Frm_EncryptA : Form
     {
@@ -26,57 +22,50 @@ namespace Enigma
             Calc();
         }
 
-        private void Txt_Password_TextChanged(object sender, EventArgs e)
-        {
-            Calc();
-        }
-
-        private void Txt_IV_TextChanged(object sender, EventArgs e)
-        {
-            Calc();
-        }
-
         private void Cmb_Type_SelectedIndexChanged(object sender, EventArgs e)
         {
             Calc();
         }
 
-        private void Btn_ShowKeys_Click(object sender, EventArgs e)
+        private async void Btn_ImportPublicKey_Click(object sender, EventArgs e)
         {
             try
             {
-                StringBuilder SB = new();
+                using OpenFileDialog OFD = new();
+                OFD.Title = "Import a public key";
+                OFD.Filter = "PEM|*.pem";
+                OFD.Multiselect = false;
+                OFD.RestoreDirectory = true;
+                OFD.CheckFileExists = true;
 
-                SB.AppendLine("-----BEGIN PUBLIC KEY-----");
-                SB.AppendLine("WIP");
-                SB.AppendLine("-----END PUBLIC KEY-----");
-                SB.AppendLine(Environment.NewLine + Environment.NewLine);
-                SB.AppendLine("-----BEGIN RSA PRIVATE KEY-----");
-                SB.AppendLine("WIP");
-                SB.AppendLine("-----END RSA PRIVATE KEY-----");
-
-                Txt_Result.Text = SB.ToString();
+                if (OFD.ShowDialog() == DialogResult.OK)
+                {
+                    string Data = await Functions.ImportFile(OFD.FileName);
+                    AsymmetricEncryption.For_Encrypt.ImportKeys(Data);
+                }
             }
             catch (Exception ex) { Txt_Result.Text = $"/// ERROR ///{Environment.NewLine}{Environment.NewLine}{ex.Message}"; }
         }
 
-        private void Btn_GenerateKeys_Click(object sender, EventArgs e)
+
+        private void Nud_KeyBit_ValueChanged(object sender, EventArgs e)
         {
             try
             {
-                AsymmetricEncryption.CreatAsymmetriceKeys();
+                AsymmetricEncryption.KeyBitSize = int.Parse(Nud_KeyBit.Value.ToString());
             }
             catch (Exception ex) { Txt_Result.Text = $"/// ERROR ///{Environment.NewLine}{Environment.NewLine}{ex.Message}"; }
         }
+
 
 
         private void Calc()
         {
             try
             {
-                if (string.IsNullOrEmpty(Txt_Text.Text)) { Txt_Result.Text = ""; return; }
+                if (string.IsNullOrEmpty(Txt_Text.Text)) { Txt_Result.Text = "First export the public key in the Decrypt window, then import it in the Encrypt window."; return; }
 
-                byte[] EncryptedMessage = AsymmetricEncryption.Encrypt(Txt_Text.Text, AsymmetricEncryption.PublicKeyOnly);
+                byte[] EncryptedMessage = AsymmetricEncryption.For_Encrypt.Encrypt(Txt_Text.Text);
 
                 Txt_Result.Text = Cmb_Type.SelectedIndex switch
                 {

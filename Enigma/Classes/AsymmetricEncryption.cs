@@ -6,44 +6,90 @@ namespace Enigma
     internal static class AsymmetricEncryption
     {
 
-        internal static RSAParameters PrivateAndPublicKeys, PublicKeyOnly;
+        internal static int KeyBitSize = 2048;
 
-
-        internal static void CreatAsymmetriceKeys()
+        internal static class For_Encrypt
         {
-            try
-            {
-                using RSA RsaAlg = RSA.Create();
+            internal static RSA RsaAlg_Encrypt = RSA.Create(KeyBitSize);
 
-                PrivateAndPublicKeys = RsaAlg.ExportParameters(true);
-                PublicKeyOnly = RsaAlg.ExportParameters(false);
+            internal static byte[] Encrypt(string Message)
+            {
+                try
+                {
+                    RsaAlg_Encrypt.KeySize = KeyBitSize; // Set the key size in case is changed
+
+                    return RsaAlg_Encrypt.Encrypt(Encoding.UTF8.GetBytes(Message), RSAEncryptionPadding.Pkcs1);
+                }
+                catch (Exception) { throw; }
             }
-            catch (Exception) { throw; }
+
+
+            internal static void ImportKeys(string Data)
+            {
+                try
+                {
+                    RsaAlg_Encrypt.ImportFromPem(Data);
+                }
+                catch (Exception) { throw; }
+            }
         }
 
 
-        internal static byte[] Encrypt(string Message, RSAParameters RsaParameters)
+
+        internal static class For_Decrypt
         {
-            try
+            internal static RSA RsaAlg_Decrypt = RSA.Create(KeyBitSize);
+            internal static RSAParameters PrivateAndPublicKeys, PublicKeyOnly;
+
+
+            internal static string Decrypt(byte[] CipherText)
             {
-                using RSA RsaAlg = RSA.Create(RsaParameters);
-                return RsaAlg.Encrypt(Encoding.UTF8.GetBytes(Message), RSAEncryptionPadding.Pkcs1);
+                try
+                {
+                    RsaAlg_Decrypt.KeySize = KeyBitSize; // Set the key size in case is changed
+
+                    byte[] DecryptedMessage = RsaAlg_Decrypt.Decrypt(CipherText, RSAEncryptionPadding.Pkcs1);
+                    return Encoding.UTF8.GetString(DecryptedMessage);
+                }
+                catch (Exception) { throw; }
             }
-            catch (Exception) { throw; }
-        }
 
 
-        internal static string Decrypt(byte[] CipherText, RSAParameters RsaParameters)
-        {
-            try
+            internal static void CreatAsymmetriceKeys()
             {
-                using RSA RsaAlg = RSA.Create(RsaParameters);
-                byte[] DecryptedMessage = RsaAlg.Decrypt(CipherText, RSAEncryptionPadding.Pkcs1);
-                return Encoding.UTF8.GetString(DecryptedMessage);
+                try
+                {
+                    RsaAlg_Decrypt = RSA.Create(KeyBitSize);
+                    PrivateAndPublicKeys = RsaAlg_Decrypt.ExportParameters(true);
+                    PublicKeyOnly = RsaAlg_Decrypt.ExportParameters(false);
+                }
+                catch (Exception) { throw; }
             }
-            catch (Exception) { throw; }
-        }
 
+
+            internal static string ExportPublicKey()
+            {
+                try
+                {
+                    byte[] spkiDer = RsaAlg_Decrypt.ExportSubjectPublicKeyInfo();
+
+                    return new(PemEncoding.Write("PUBLIC KEY", spkiDer)); // as of .NET 7: ExportSubjectPublicKeyInfoPem;
+                }
+                catch (Exception) { throw; }
+            }
+
+
+            internal static string ExportPrivateKey()
+            {
+                try
+                {
+                    byte[] pkcs8Der = RsaAlg_Decrypt.ExportPkcs8PrivateKey();
+
+                    return new(PemEncoding.Write("PRIVATE KEY", pkcs8Der)); // as of .NET 7: ExportPkcs8PrivateKeyPem;
+                }
+                catch (Exception) { throw; }
+            }
+        }
 
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Enigma
+﻿using System.Text;
+
+namespace Enigma
 {
     internal static class Functions
     {
@@ -49,7 +51,7 @@
         {
             try
             {
-                Buffer.BlockCopy(B, 0, Merge, 0, Math.Min(B.Length, Merge. Length));
+                Buffer.BlockCopy(B, 0, Merge, 0, Math.Min(B.Length, Merge.Length));
 
                 return Merge;
             }
@@ -69,6 +71,30 @@
                 return Ret;
             }
             catch { return Array.Empty<byte>(); }
+        }
+
+        internal async static Task SaveFile(string FileName, string Data)
+        {
+            try
+            {
+                using FileStream FS = new(FileName, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite, 4096, FileOptions.Asynchronous | FileOptions.SequentialScan);
+                FS.SetLength(0);
+
+                using StreamWriter SW = new(FS, Encoding.UTF8);
+                await SW.WriteAsync(Data);
+            }
+            catch { throw; }
+        }
+
+        internal async static Task<string> ImportFile(string FileName)
+        {
+            try
+            {
+                using FileStream FS = new(FileName, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, FileOptions.Asynchronous | FileOptions.SequentialScan);
+                using StreamReader SR = new(FS);
+                return await SR.ReadToEndAsync();
+            }
+            catch { throw; }
         }
     }
 }

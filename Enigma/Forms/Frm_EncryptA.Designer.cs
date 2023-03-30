@@ -33,8 +33,10 @@
             label2 = new Label();
             Txt_Result = new TextBox();
             Txt_Text = new TextBox();
-            Btn_GenerateKeys = new Button();
-            Btn_ShowKeys = new Button();
+            Btn_ImportPrivateKey = new Button();
+            Nud_KeyBit = new NumericUpDown();
+            label3 = new Label();
+            ((System.ComponentModel.ISupportInitialize)Nud_KeyBit).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -52,7 +54,6 @@
             // 
             // Cmb_Type
             // 
-            Cmb_Type.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             Cmb_Type.DropDownStyle = ComboBoxStyle.DropDownList;
             Cmb_Type.FormattingEnabled = true;
             Cmb_Type.Items.AddRange(new object[] { "HEX", "Base64", "Binary", "String" });
@@ -64,7 +65,6 @@
             // 
             // label2
             // 
-            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Location = new Point(12, 46);
             label2.Name = "label2";
@@ -80,7 +80,6 @@
             Txt_Result.Location = new Point(12, 196);
             Txt_Result.Multiline = true;
             Txt_Result.Name = "Txt_Result";
-            Txt_Result.PlaceholderText = "- Encrypted message -";
             Txt_Result.ReadOnly = true;
             Txt_Result.ScrollBars = ScrollBars.Both;
             Txt_Result.Size = new Size(810, 218);
@@ -97,33 +96,47 @@
             Txt_Text.TabIndex = 11;
             Txt_Text.TextChanged += Txt_Text_TextChanged;
             // 
-            // Btn_GenerateKeys
+            // Btn_ImportPrivateKey
             // 
-            Btn_GenerateKeys.Location = new Point(366, 38);
-            Btn_GenerateKeys.Name = "Btn_GenerateKeys";
-            Btn_GenerateKeys.Size = new Size(124, 23);
-            Btn_GenerateKeys.TabIndex = 17;
-            Btn_GenerateKeys.Text = "Generate new keys";
-            Btn_GenerateKeys.UseVisualStyleBackColor = true;
-            Btn_GenerateKeys.Click += Btn_GenerateKeys_Click;
+            Btn_ImportPrivateKey.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            Btn_ImportPrivateKey.ForeColor = Color.ForestGreen;
+            Btn_ImportPrivateKey.Location = new Point(242, 38);
+            Btn_ImportPrivateKey.Name = "Btn_ImportPrivateKey";
+            Btn_ImportPrivateKey.Size = new Size(124, 23);
+            Btn_ImportPrivateKey.TabIndex = 17;
+            Btn_ImportPrivateKey.Text = "Import public key";
+            Btn_ImportPrivateKey.UseVisualStyleBackColor = true;
+            Btn_ImportPrivateKey.Click += Btn_ImportPublicKey_Click;
             // 
-            // Btn_ShowKeys
+            // Nud_KeyBit
             // 
-            Btn_ShowKeys.Location = new Point(285, 38);
-            Btn_ShowKeys.Name = "Btn_ShowKeys";
-            Btn_ShowKeys.Size = new Size(75, 23);
-            Btn_ShowKeys.TabIndex = 18;
-            Btn_ShowKeys.Text = "Show keys";
-            Btn_ShowKeys.UseVisualStyleBackColor = true;
-            Btn_ShowKeys.Click += Btn_ShowKeys_Click;
+            Nud_KeyBit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            Nud_KeyBit.Location = new Point(765, 38);
+            Nud_KeyBit.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            Nud_KeyBit.Name = "Nud_KeyBit";
+            Nud_KeyBit.Size = new Size(57, 23);
+            Nud_KeyBit.TabIndex = 29;
+            Nud_KeyBit.Value = new decimal(new int[] { 2048, 0, 0, 0 });
+            Nud_KeyBit.ValueChanged += Nud_KeyBit_ValueChanged;
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label3.AutoSize = true;
+            label3.Location = new Point(713, 42);
+            label3.Name = "label3";
+            label3.Size = new Size(46, 15);
+            label3.TabIndex = 28;
+            label3.Text = "Key bit:";
             // 
             // Frm_EncryptA
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(834, 426);
-            Controls.Add(Btn_ShowKeys);
-            Controls.Add(Btn_GenerateKeys);
+            Controls.Add(Nud_KeyBit);
+            Controls.Add(label3);
+            Controls.Add(Btn_ImportPrivateKey);
             Controls.Add(Cmb_Type);
             Controls.Add(label2);
             Controls.Add(Txt_Result);
@@ -133,6 +146,7 @@
             Name = "Frm_EncryptA";
             Text = "Encrypt Asymmetric";
             Load += Frm_EncryptA_Load;
+            ((System.ComponentModel.ISupportInitialize)Nud_KeyBit).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -144,7 +158,8 @@
         private Label label2;
         private TextBox Txt_Result;
         private TextBox Txt_Text;
-        private Button Btn_GenerateKeys;
-        private Button Btn_ShowKeys;
+        private Button Btn_ImportPrivateKey;
+        private NumericUpDown Nud_KeyBit;
+        private Label label3;
     }
 }

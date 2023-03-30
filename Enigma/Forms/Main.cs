@@ -13,8 +13,6 @@ namespace Enigma
             {
                 LoadAllForms();
                 ParseForm("Frm_Hash", Action.Open);
-
-                AsymmetricEncryption.CreatAsymmetriceKeys();
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
