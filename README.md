@@ -17,9 +17,9 @@
 
 ![Hash](https://user-images.githubusercontent.com/50233545/228641053-9b929d34-452f-4a36-8b57-a2c01a8da92c.png)
 
-![Symmetric Encrypt](https://user-images.githubusercontent.com/50233545/228641084-dca545fa-977d-4828-a13c-488357482886.png)
+![Symmetric Encrypt](https://user-images.githubusercontent.com/50233545/229364638-991a7259-b407-4be0-90a5-18d95606a4ac.png)
 
-![Symmetric Decrypt](https://user-images.githubusercontent.com/50233545/228641117-601483f4-1071-45a0-bb41-ffdf8a2dd5b6.png)
+![Symmetric Decrypt](https://user-images.githubusercontent.com/50233545/229364685-880cd720-463c-4610-b994-53ee0386fbdc.png)
 
 ![Asymmetric Encrypt](https://user-images.githubusercontent.com/50233545/228924605-e2a441b4-4413-4a06-af30-c64e45ece0c7.png)
 
