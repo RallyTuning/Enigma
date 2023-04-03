@@ -58,25 +58,5 @@
             catch (Exception ex) { Txt_Result.Text = $"/// ERROR ///{Environment.NewLine}{Environment.NewLine}{ex.Message}"; }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                byte[] key2, iv2;
-                using (System.Security.Cryptography.Aes aesAlg2 = System.Security.Cryptography.Aes.Create())
-                {
-                    key2 = aesAlg2.Key;
-                    iv2 = aesAlg2.IV;
-                }
-
-                Txt_Result.AppendText(Convert.ToHexString(key2) + Environment.NewLine + Convert.ToHexString(iv2) + Environment.NewLine + Environment.NewLine);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
-
     }
 }

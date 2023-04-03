@@ -91,5 +91,28 @@ namespace Enigma
             }
         }
 
+
+        internal static class Signature
+        {
+            internal static byte[] Sign(string Message, RSA RsaAlg)
+            {
+                try
+                {
+                    return RsaAlg.SignData(Encoding.UTF8.GetBytes(Message), HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+                }
+                catch (Exception) { throw; }
+            }
+
+
+            internal static bool Verify(string Message, byte[] Signature, RSA RsaAlg)
+            {
+                try
+                {
+                    return RsaAlg.VerifyData(Encoding.UTF8.GetBytes(Message), Signature, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+                }
+                catch (Exception) { throw; }
+            }
+        }
+
     }
 }
